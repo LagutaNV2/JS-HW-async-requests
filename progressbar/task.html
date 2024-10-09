@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Progressbar</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="task.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo__container">
+          <a href="https://netology.ru/" class="logo__link"></a>
+        </div>
+        <h1 class="header__title">
+            Домашнее задание к занятию 3.1 «Асинхронные запросы». Загрузка больших файлов.
+        </h1>
+    </header>
+    <main class="content">
+        <div class="card">
+
+            <!-- Этот элемент создаёт прогресс-бар, который будет отображать процент завершения
+             загрузки файла. Атрибут value определяет текущее значение прогресса (от 0 до 1).
+             В данном случае, он изначально установлен на 0.0, так как загрузка ещё не началась. -->
+            <progress value="0.0" id="progress"></progress>
+
+            <!-- Тег form задаёт HTML-форму, которая предназначена для отправки данных.
+             Атрибут action указывает, куда отправлять данные формы  -->
+            <form action="https://students.netoservices.ru/nestjs-backend/upload" id="form">
+
+                <!-- Этот элемент является полем для выбора файла с вашего устройства.
+                 Его атрибут type="file" говорит браузеру, что это поле для загрузки файла.
+                 Атрибут required означает, что перед отправкой формы необходимо выбрать файл;
+                 открываtт файловый менеджер (диалог выбора файла) на вашем устройстве. -->
+                <input type="file" name="file" id="file" required>
+
+                <!-- при клике на содержимое этого label, будет автоматически активировано поле
+                для выбора файла. Внутри label находятся два элемента <span>, которые содержат
+                текст и стили, отвечающие за внешний вид кнопки.
+                Этот span визуально он выглядит как кнопка, благодаря стилям из CSS -->
+                <label for="file">
+                    <span class="input__wrapper input__wrapper-button">Выберите файл</span>
+
+                    <!--отображает описание выбранного файла. Изначально здесь написано "Имя файла...",
+                    но как только файл будет выбран, этот текст изменится, чтобы отобразить имя
+                    выбранного файла. Когда пользователь выбирает файл, в элементе input[type="file"]
+                    происходит событие change. Это событие отслеживается в JS (main.js).
+                    Извлекаем имя через свойство this.files[0].name. После этого мы обновляем
+                    содержимое элемента fileDesc, чтобы отобразить это имя. -->
+                    <span class="input__wrapper input__wrapper-desc">Имя файла...</span>
+
+                </label>
+                <button id="send">Отправить</button>
+            </form>
+            <script src="main.js"></script>
+            <script src="task.js"></script>
+        </div>
+    </main>
+
+</body>
+</html>
